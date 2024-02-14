@@ -9,6 +9,6 @@
 
 # 源地址
     ```
-    https://raw.kkgithub.com/samisold/TvboxJarMod/main/conf/feimao%20-%20mod.json
+    https://raw.kkgithub.com/samisold/TvboxJarMod/main/conf/feimao-mod.json
     ```
 
