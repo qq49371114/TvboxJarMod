@@ -61,8 +61,9 @@ def git_push(repo_path):
     # 现在，我们想提交这些修改，并提供一个提交消息
     repo.git.commit("-m", "自动更新源")
     # 最后，我们想要将这些提交推送到远程仓库
-    repo.git.push()
+    push_result = repo.git.push()
+    print(push_result)
 
 if __name__ == '__main__':
     update_json_md5()
-    git_push('./')
+    git_push(current_path)
