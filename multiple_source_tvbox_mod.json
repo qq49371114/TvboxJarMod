@@ -1,0 +1,12 @@
+{
+    "storeHouse": [
+        {
+            "sourceName": "肥猫",
+            "sourceUrl": "https://raw.kkgithub.com/samisold/TvboxJarMod/main/conf/feimao-mod.json"
+        },
+        {
+            "sourceName": "饭太硬",
+            "sourceUrl": "https://raw.kkgithub.com/samisold/TvboxJarMod/main/conf/fan-mod.json"
+        }
+    ]
+}
