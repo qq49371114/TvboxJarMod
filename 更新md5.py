@@ -87,7 +87,7 @@ def update_feimao_json():
             spider_host_url = spider.replace(spider_name, '')
         # 获取内嵌jar网址
         for site in sites:
-            if site.find("jar") != -1:
+            if site.get("jar"):
                 jar_url = site["jar"] if len(site["jar"]) > 0 else ""
                 break
         # 提取内嵌jar包网址中的jar名和md5
@@ -106,7 +106,7 @@ def update_feimao_json():
                 jar_md5 = hashlib.md5(f.read()).hexdigest()
             if jar_url_md5 != jar_md5 and jar_md5 != '':
                 for site in sites:
-                    if site.find("jar") != -1 and len(site["jar"])>0:
+                    if site.get("jar") and len(site["jar"])>0:
                         site['jar'] = spider_host_url + jar_name + ';md5;' + jar_md5
                         json_updated = True
     # 将json对象写入到feimao-mod.json
@@ -232,6 +232,7 @@ def update_jar_official():
         return False            
 
 if __name__ == '__main__':
-    update_jar_official()
-    update_json_md5()
-    git_push(current_path)
+    # update_jar_official()
+    # update_json_md5()
+    update_feimao_json()
+    # git_push(current_path)
