@@ -8,5 +8,10 @@
             "sourceName": "饭太硬",
             "sourceUrl": "https://raw.kkgithub.com/samisold/TvboxJarMod/main/conf/fan-mod.json"
         }
-    ]
+    ],
+	"ext": {
+		"highWeight":["csp_Freeok","csp_NanGua"],
+		"lowWeight":["csp_Jianpian","csp_FirstAid"],
+		"adKeyword":["广告","公众号","饭太硬","肥猫","免费分享","神秘的哥哥"]
+	}
 }

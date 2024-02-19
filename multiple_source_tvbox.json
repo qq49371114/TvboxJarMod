@@ -3,15 +3,16 @@
         {
             "sourceName": "肥猫",
             "sourceUrl": "http://肥猫.live",
-			"ext": {
-				"":[],
-				"":[],
-				"":[],
-			}
+
         },
         {
             "sourceName": "饭太硬",
             "sourceUrl": "http://www.饭太硬.top/tv/"
         }
-    ]
+    ],
+	"ext": {
+		"highWeight":["csp_Freeok","csp_NanGua"],
+		"lowWeight":["csp_Jianpian","csp_FirstAid"],
+		"adKeyword":["广告","公众号","饭太硬","肥猫","免费分享","神秘的哥哥"]
+	}
 }
