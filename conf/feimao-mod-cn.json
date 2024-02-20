@@ -280,7 +280,7 @@
             "type": 3,
             "api": "csp_Panda",
             "ext": "http://我不是.肥猫.live/json/虎虎.json",
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": "黑狐",
@@ -403,7 +403,7 @@
             "type": 3,
             "api": "csp_Panda",
             "ext": "分类:日漫$1#国漫$2#剧场$3#美漫$4#少儿$5,分类url:https://www.lmfun.vip/vodshow/area/{area}/by/{by}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html",
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": "樱花动漫",
@@ -411,7 +411,7 @@
             "type": 3,
             "api": "csp_Panda",
             "ext": "分类url:https://www.857yhdm.com/show/{cateId}--{by}------{catePg}---{year}.html,分类:日本动漫$ribendongman#国产动漫$guochandongman#动漫电影$dongmandianying#欧美动漫$omeidongman",
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": "csp_Anime1",
@@ -421,7 +421,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": "csp_xifan",
@@ -444,7 +444,7 @@
                 "ratio": 3.8
             },
             "gridview": "0-0-4.1",
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": " 在线┃直播1",
@@ -456,7 +456,7 @@
                 "type": "rect",
                 "ratio": 1.68
             },
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": "看球",
@@ -558,7 +558,7 @@
                 "ratio": 1.597
             },
             "ext": "http://alist.xn--z7x900a.live/少儿教育.json",
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": "小学",
@@ -573,7 +573,7 @@
                 "ratio": 1.597
             },
             "ext": "http://alist.xn--z7x900a.live/小学课堂.json",
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": "初中",
@@ -588,7 +588,7 @@
                 "ratio": 1.597
             },
             "ext": "http://alist.xn--z7x900a.live/初中课堂.json",
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": "高中",
@@ -603,7 +603,7 @@
                 "ratio": 1.597
             },
             "ext": "http://alist.xn--z7x900a.live/高中课堂.json",
-            "jar": "https://samisold.lanzn.com/iomRp1otd7bg;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
+            "jar": "https://samisold.lanzn.com/i4qEu1otyeeh;md5;9a8101e0729e0d75b0b6c3aa14ee365f"
         },
         {
             "key": "push_agent",
