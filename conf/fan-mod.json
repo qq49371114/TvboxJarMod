@@ -50,6 +50,37 @@
             "ext": "https://www.hdmyy.com/"
         },
         {
+            "key": "DiDuan",
+            "name": "⏮️低端┃外剧",
+            "type": 3,
+            "api": "csp_Ddrk",
+            "playerType": "2",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1
+        },
+        {
+            "key": "率率",
+            "name": "🌸率率┃App",
+            "type": 3,
+            "api": "csp_AppLd",
+            "playerType": 1,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "ext": "FbjSZ1FapovNr0QF4QvEpcoxb5gWXdQJE2MXqLG6ykBXQM2e7TnDygTd5bXnCjGuLD/PknUhkn0yQ2NzCLl5XQ4NDrrhhBSVYlhBvnhU8N1VerP8K2NTNgP+NxESztO6"
+        },
+        {
+            "key": "南坊",
+            "name": "☀南坊┃App",
+            "type": 3,
+            "api": "csp_Appto",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "ext": "FbjDcUxPqpfNr0QF4QvE6sExbdFaCsJGU3QP9+aykEFcCJTRtWyLyATI/Kr0RWOrdmmE82op1Sp3CSI5WoN6fFdLHN+LxA+CamUTj3pr0P4lAumpPCpzMgL5ZXIuytPprjLXKt5kbYcwtkFA9gT8BgdcY6mr40MUeodBOmAdLR2v8uYbpugEDOo5fQ=="
+        },
+        {
             "key": "南瓜",
             "name": "🎃南瓜┃App",
             "type": 3,
@@ -90,17 +121,6 @@
             "ext": "https://www.czzy55.com/"
         },
         {
-            "key": "率率",
-            "name": "🌸率率┃App",
-            "type": 3,
-            "api": "csp_AppLd",
-            "playerType": 1,
-            "searchable": 1,
-            "quickSearch": 1,
-            "changeable": 1,
-            "ext": "FbjSZ1FapovNr0QF4QvEpcoxKYZaFIdGVjVHqOzmh0sHApOErDLDkEnd/fT0RWOxfniO12FgzTJjcg0PGaZSYgk9BKPOkG6SZz0wlkFM9O11CrjANWExcUutLQ=="
-        },
-        {
             "key": "毛驴",
             "name": "🍓毛驴┃直连",
             "type": 3,
@@ -132,20 +152,10 @@
             "ext": "FbjDcUxPqpfNr0QF4QvE6sExbd4UXJxJXzdL462ywU1XScGa5G6Hj0/c+Ou1GW6rdX6N2XIhnD46QzIsRoZ8bk4fG4OYi0iCaWwRj2ddkacwFqHtLjQhalHqIy0+kpiTv2eOfJYxTshgrxcJ+g3lEHx7ZLC9kB1TCfZUSHwqHB3tt6V/1OhRENIOZNRFfXVBEFd7jQg+J06kjCAF7z1Bt8hRvMjC2VcbQXsEz8MCZDgu06C9/wirWcTa/wWJsfT+Z7fXaDs+dIWMYiwf6td5CWTx6LfL6eTuiMhs2KU5Byw9F+4Y/AHBg4r+LEe+Hm4EM2d8X3ca5zHSj+kjmpXOiGDo4TalFqgTq67eggmthCbV2d131SKc03V+5gruudQQk/Tb9e4lg6SQhA9/5kWOOM/LRmkqIxSt6d0wpu7yKKh65enwKbgasc93/HnGr6W4LuZjf6eYnS2GgRzWRE0fT5lYNmxnWeRnYuLhoZbDqslAfJzg"
         },
         {
-            "key": "一起看",
+            "key": "一起看 ",
             "name": "🎉一起┃App",
             "type": 3,
             "api": "csp_YQKan",
-            "searchable": 1,
-            "quickSearch": 1,
-            "changeable": 1
-        },
-        {
-            "key": "DiDuan",
-            "name": "⏮️低端┃直连",
-            "type": 3,
-            "api": "csp_Ddrk",
-            "playerType": "2",
             "searchable": 1,
             "quickSearch": 1,
             "changeable": 1
@@ -177,7 +187,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "changeable": 1,
-            "ext": "https://www.libvio.la/"
+            "ext": "https://www.libvio.pw/"
         },
         {
             "key": "Auete",
@@ -258,7 +268,7 @@
         },
         {
             "key": "88js",
-            "name": "⚽88┃看球",
+            "name": "⚽ 88┃看球",
             "type": 3,
             "api": "csp_Kanqiu",
             "style": {
@@ -270,7 +280,7 @@
         },
         {
             "key": "Jrsjs",
-            "name": "⚽Jrs┃球迷",
+            "name": "⚽ Jrs┃球迷",
             "type": 3,
             "api": "https://agit.ai/fantaiying/fty/raw/branch/master/ext/drpy2.min.js",
             "ext": "https://agit.ai/fantaiying/fty/raw/branch/master/ext/jrk.js",
@@ -497,7 +507,7 @@
         },
         {
             "key": "Biliych",
-            "name": "🅱哔哔┃歌曲",
+            "name": "🅱明星┃演唱会",
             "type": 3,
             "api": "csp_Bili",
             "style": {
@@ -599,7 +609,7 @@
         },
         {
             "key": "fan",
-            "name": "导航https://饭太硬.top",
+            "name": "导航 https://饭太硬.top",
             "type": 3,
             "api": "csp_XPath",
             "searchable": 1,
@@ -802,13 +812,15 @@
             "name": "ff",
             "hosts": [
                 "vip.ffzy",
-                "hd.ffzy"
+                "hd.ffzy",
+                "ffzy"
             ],
             "regex": [
                 "25.0666",
                 "25.08",
                 "20.52",
-                "25.1"
+                "25.1",
+                "25.1999"
             ]
         },
         {
@@ -844,9 +856,9 @@
                 "magnet"
             ],
             "regex": [
-                "最新",
-                "直播",
-                "更新"
+                "最 新",
+                "直 播",
+                "更 新"
             ]
         }
     ],
