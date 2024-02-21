@@ -403,7 +403,7 @@ def update_lanzou_json():
     url = url_pattern.findall(response_text)[0]
     host = lanzou_dir_url.split('/')[-1]
     host = lanzou_dir_url.replace(host, '')
-    post_url = host + url
+    post_url = host[0:len(host)-1] + url
     t = t_pattern.findall(response_text)[0]
     k = k_pattern.findall(response_text)[0]
     data['pwd'] = lanzou_dir_password
@@ -457,14 +457,14 @@ def update_lanzou_json():
 
 
 if __name__ == '__main__':
-    # 1. 更新多仓源json
-    check_and_update_multiple_json_file()
-    # 2. 更新官方源json, -mod.json文件
-    check_and_update_json_files()
-    # 3. 更新官方源jar包
-    update_jar_official()
-    # 4. 更新json中的md5
-    update_json_md5()
+    # # 1. 更新多仓源json
+    # check_and_update_multiple_json_file()
+    # # 2. 更新官方源json, -mod.json文件
+    # check_and_update_json_files()
+    # # 3. 更新官方源jar包
+    # update_jar_official()
+    # # 4. 更新json中的md5
+    # update_json_md5()
     # 5. 更新-mod-cn.json蓝奏云地址
     update_lanzou_json()
     # git_push(current_path)
