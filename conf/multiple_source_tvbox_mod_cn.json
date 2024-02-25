@@ -1,0 +1,52 @@
+{
+    "storeHouse": [
+        {
+            "sourceName": "饭太硬",
+            "sourceUrl": "https://gitee.com/samisold/TvboxJarMod/raw/main/conf/multiple_source_tvbox_mod_cn.json"
+        },
+        {
+            "sourceName": "肥猫",
+            "sourceUrl": "https://gitee.com/samisold/TvboxJarMod/raw/main/conf/multiple_source_tvbox_mod_cn.json"
+        }
+    ],
+    "ext": {
+        "highWeightApi": [
+            "fre",
+            "南瓜",
+            "星奇",
+            "黑狐",
+            "低端",
+            "咕噜"
+        ],
+        "lowWeightApi": [
+            "官源",
+            "荐片",
+            "少儿",
+            "小学",
+            "初中",
+            "高中",
+            "儿童",
+            "哔哩"
+        ],
+        "blockApi": [
+            "荐影",
+            "预告",
+            "急救",
+            "小说",
+            "短剧",
+            "体育",
+            "聚短",
+            "球",
+            "MV",
+            "┃飞"
+        ],
+        "adKeyword": [
+            "广告",
+            "公众号",
+            "饭太硬",
+            "肥猫",
+            "免费分享",
+            "神秘的哥哥"
+        ]
+    }
+}
