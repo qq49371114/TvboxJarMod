@@ -463,7 +463,7 @@ class OfficialSingleJsonFile(OfficialJsonFile, SingleJsonFile):
         spider_url = spider.split(';md5;')[0]
         spider_md5 = SpiderUrlUtils.get_md5(spider)
         spider_jar = SpiderUrlUtils.get_file_name(spider).replace('.txt', '.jar')
-        if spider_md5 != self.get_jar_md5(spider_jar):
+        if spider_md5.lower() != self.get_jar_md5(spider_jar).lower():
             self._missing_jar_dict[spider_jar] = spider_url
             self.download_jar(os.path.join(Config.jar_official_dir_path, spider_jar), spider_url)
         for site in self.json_obj.get('sites'):
@@ -612,7 +612,7 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
                     self._missing_jar_dict.update({jar_file_name: jar_url})
                     print(f"方法：sync_jar_files;  {self.file_name}中的jar文件{jar_file_name}不存在")
                     continue
-                if jar_md5_from_json != jar_md5:
+                if jar_md5_from_json != jar_md5 and jar_md5_from_json != '':
                     site['jar'] = jar_url.replace(jar_md5_from_json, jar_md5)
         self.json_obj = json_obj
 
@@ -679,7 +679,7 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
                 if name_or_id == self._jar_id_dict.get(file_name):
                     return file_name
             # 如果不存在，则返回None
-            print(f"方法：get_lanzou_id_or_file_name;  {self.file_name}中的jar文件{name_or_id}不存在")
+            print(f"方法：get_lanzou_id_or_file_name;  蓝奏云共享文件夹中缺少{name_or_id}jar文件")
             return None
 
 
