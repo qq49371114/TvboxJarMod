@@ -315,8 +315,10 @@ class SingleJsonFile(JsonFile):
         self._sites = self.json_obj["sites"]
         for site in self._sites:
             if "jar" in site.keys():
-                jar_url = site["jar"]
-                site["jar"] = jar_url.replace(SpiderUrlUtils.get_host_from(jar_url), self._spider_host)
+                jar_url = site['jar']
+                if jar_url.find('jar') == -1:
+                    continue
+                site['jar'] = jar_url.replace(SpiderUrlUtils.get_host_from(jar_url), self._spider_host)
 
     def get_jar_md5(self, jar_file_name):
         jar_file_name = jar_file_name.replace('.txt', '.jar')
@@ -575,11 +577,15 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
             self._sites = self.json_obj["sites"]
             for site in self._sites:
                 if "jar" in site.keys():
-                    jar_url = site["jar"]
+                    jar_url = site['jar']
+                    if not jar_url:
+                        continue
+                    if jar_url.find('.jar') == -1:
+                        continue
                     jar_file_name = SpiderUrlUtils.get_file_name(jar_url).replace('.txt', '.jar')
-                    jar_id = jar_file_name if jar_id.find('.jar') == -1 else self.get_lanzou_id_or_file_name(jar_file_name)
+                    jar_id = jar_file_name if jar_file_name.find('.jar') == -1 else self.get_lanzou_id_or_file_name(jar_file_name)
                     jar_new_url = self.mod_host + jar_id
-                    site["jar"] = jar_url.replace(jar_url.split(';md5;')[0], jar_new_url)
+                    site['jar'] = jar_url.replace(jar_url.split(';md5;')[0], jar_new_url)
         else:
             self.spider_host = self.mod_host + 'jar/'
         self.sync_jar_files()
@@ -612,7 +618,10 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
                     self._missing_jar_dict.update({jar_file_name: jar_url})
                     print(f"方法：sync_jar_files;  {self.file_name}中的jar文件{jar_file_name}不存在")
                     continue
-                if jar_md5_from_json != jar_md5 and jar_md5_from_json != '':
+                # 如果jar_url中没有md5，则添加md5
+                if jar_md5_from_json == '':
+                    site['jar'] = jar_url if jar_md5 == '' else jar_url + ";md5;" + jar_md5
+                elif jar_md5_from_json != jar_md5:
                     site['jar'] = jar_url.replace(jar_md5_from_json, jar_md5)
         self.json_obj = json_obj
 

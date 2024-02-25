@@ -165,7 +165,7 @@
             "type": 3,
             "api": "csp_Yingtantv2",
             "searchable": 1,
-            "jar": "https://raw.kkgithub.com/samisold/TvboxJarMod/main/jar/zdzj.jar"
+            "jar": "https://raw.kkgithub.com/samisold/TvboxJarMod/main/jar/zdzj.jar;md5;6586de7a7e44b3e6797003dca0d3597a"
         },
         {
             "key": "皮皮虾",
@@ -350,7 +350,7 @@
             "type": 3,
             "api": "csp_Movie2",
             "ext": "https://raw.gitcode.com/wykj/ys/raw/main/json/Movie5.json",
-            "jar": "https://raw.kkgithub.com/samisold/TvboxJarMod/main/jar/wyog.php"
+            "jar": "http://www.wya6.cn/tz/wyog.php"
         },
         {
             "key": "csp_SP360",

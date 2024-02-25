@@ -1,5 +1,5 @@
 {
-    "spider": "https://samisold.lanzn.com/jar/custom_spider.jar;md5;",
+    "spider": "https://samisold.lanzn.com/iB0Ao1pdjclc;md5;b0005f1168110ce8850b18afd65a2f5a",
     "wallpaper": "http://我不是.肥猫.live/ppic/feimao.php",
     "sites": [
         {
@@ -165,7 +165,7 @@
             "type": 3,
             "api": "csp_Yingtantv2",
             "searchable": 1,
-            "jar": "https://samisold.lanzn.com/jar/zdzj.jar"
+            "jar": "https://samisold.lanzn.com/izpCs1pdjcne;md5;6586de7a7e44b3e6797003dca0d3597a"
         },
         {
             "key": "皮皮虾",
@@ -350,7 +350,7 @@
             "type": 3,
             "api": "csp_Movie2",
             "ext": "https://raw.gitcode.com/wykj/ys/raw/main/json/Movie5.json",
-            "jar": "https://samisold.lanzn.com/jar/wyog.php"
+            "jar": "http://www.wya6.cn/tz/wyog.php"
         },
         {
             "key": "csp_SP360",
