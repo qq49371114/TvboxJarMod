@@ -25,7 +25,8 @@ class Config:
     jar_official_dir_path = os.path.join(root_path, 'jar_official')
     source_name_cn_en_dict = {"饭太硬": "fan", "肥猫": "feimao"}
     index_url = "https://xn--sss604efuw.top/"
-
+    edge_user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0'
+    okhttp_user_agent = 'Okhttp/3.11.0'
     # 蓝奏网盘jar包共享文件夹
     lanzou_dir_url = 'https://samisold.lanzn.com/b0covfueh'
     lanzou_dir_password = 'teng'
@@ -340,7 +341,7 @@ class SingleJsonFile(JsonFile):
 class OfficialMultipleJsonFile(OfficialJsonFile, MultipleJsonFile):
     def __init__(self, file_path=None, json_observers: list[Observer] = None,
                  download_url: str = Config.index_url,
-                 store_house: list[VodSource] = None, ext: VodExt = None):
+                 store_house: list[VodSource] = None, ext: VodExt = None, force_update: bool = False):
         file_path = file_path if file_path else Config.multiple_json_file
         MultipleJsonFile.__init__(self, file_path, store_house, ext)
         if not json_observers or json_observers == []:
@@ -350,17 +351,19 @@ class OfficialMultipleJsonFile(OfficialJsonFile, MultipleJsonFile):
             json_observers.extend([ModMultipleJsonFile(json_file_path) for json_file_path in multiple_mod_json_file])
             official_json_paths = [self.file_path.replace(self.file_name, f'{source_name}.json') for source_name in
                                    Config.source_name_cn_en_dict.values()]
-            json_observers.extend([OfficialSingleJsonFile(json_file_path) for json_file_path in official_json_paths])
+            json_observers.extend([OfficialSingleJsonFile(json_file_path, force_update=force_update) for json_file_path in official_json_paths])
             self._json_observers = json_observers
         else:
             self._json_observers = json_observers
         self._download_url = download_url
+        self._force_update = force_update
 
     """
     描述：更新多仓源json文件
     force: 是否强制下载更新
     """
-    def download(self, force=False):
+    def download(self, force_update: bool = None):
+        force_update = force_update if force_update else self._force_update
         # 发送 HTTP GET 请求并获取响应内容
         response = requests.get(self._download_url)
         if response.status_code != 200:
@@ -386,18 +389,18 @@ class OfficialMultipleJsonFile(OfficialJsonFile, MultipleJsonFile):
             remote_store_house_json.append(source)
         local_store_house_json = [source.json() for source in self.store_house]
         # todo:可以修改这里为true，设置为永远更新
-        if local_store_house_json == remote_store_house_json and not force:
-            print("多仓源未发现更新")
-        else:
+        if local_store_house_json != remote_store_house_json or force_update:
             self.store_house = [VodSource(source['sourceName'], source['sourceUrl']) for source in
                                 remote_store_house_json]
             self.save()
             self.notify()
+        else:
+            print("多仓源未发现更新")
 
 
 class OfficialSingleJsonFile(OfficialJsonFile, SingleJsonFile):
     def __init__(self, file_path, json_observers: List[Observer] = None, download_url: str = None,
-                 spider: str = None, sites: List[dict] = None, spider_host: str = None):
+                 spider: str = None, sites: List[dict] = None, spider_host: str = None, force_update: bool = False):
         SingleJsonFile.__init__(self, file_path, spider, sites, spider_host)
         if not json_observers or json_observers == []:
             json_file_paths = [self.file_path.replace(".json", mod_suffix) for mod_type, mod_suffix in
@@ -407,6 +410,7 @@ class OfficialSingleJsonFile(OfficialJsonFile, SingleJsonFile):
         else:
             self._json_observers = [json_observers]
         self._download_url = download_url
+        self._force_update = force_update
 
     def update(self, official_multiple_json_file: OfficialMultipleJsonFile):
         # 发送请求, 获取最新官源json文件, 解析json文件获取md5值，存入json_md5_dict
@@ -422,8 +426,7 @@ class OfficialSingleJsonFile(OfficialJsonFile, SingleJsonFile):
             source_url = source.source_url
             self._download_url = source_url
             # 设置UA字符串
-            user_agent = 'Okhttp/3.11.0'
-            session.headers.update({'User-Agent': user_agent})
+            session.headers.update({'User-Agent': Config.okhttp_user_agent})
             # 使用session对象发起请求，它会带上我们设置的UA
             try:
                 response = session.get(source_url)
@@ -448,8 +451,8 @@ class OfficialSingleJsonFile(OfficialJsonFile, SingleJsonFile):
             except JSONDecodeError:
                 print(f"无效的json数据: {data}")
                 continue
-            # 判断官源json是否需要更新
-            if self.json_obj != remote_json_data:
+            # 判断官源json是否需要更新；增加强制更新选项
+            if self.json_obj != remote_json_data or self._force_update:
                 self.json_obj = remote_json_data
                 self.sync_jar_files()
                 self.save()
@@ -487,10 +490,9 @@ class OfficialSingleJsonFile(OfficialJsonFile, SingleJsonFile):
     def download_jar(self, jar_path, jar_url):
         jar_path = jar_path.replace('.txt', '.jar')
         # 设置UA字符串
-        user_agent = 'Okhttp/3.11.0'
         # 创建一个Session对象，以便可以保持UA设置
         session = requests.Session()
-        session.headers.update({'User-Agent': user_agent})
+        session.headers.update({'User-Agent': Config.okhttp_user_agent})
         response = session.get(jar_url)
         with open(jar_path, 'wb') as f:
             f.write(response.content)
@@ -542,8 +544,10 @@ class ModMultipleJsonFile(MultipleJsonFile, ModJsonFile):
         temp_obj = official_multiple_json_file.json_obj
         store_house = temp_obj["storeHouse"]
         for source in store_house:
-            #
-            source["sourceUrl"] = self.mod_host + 'conf/' + self.file_name
+            source_name = Config.source_name_cn_en_dict[source["sourceName"]]
+            # 默认使用mod_cn.json配置
+            file_name = source_name + Config.mod_json_types.get('MOD_CN')
+            source["sourceUrl"] = self.mod_host + 'conf/' + file_name
         self.json_obj = temp_obj
         self.save()
 
@@ -627,11 +631,9 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
 
     def parse_lanzou_dir(self):
         # 爬虫获取jar包分享网址
-        # 设置UA字符串
-        user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0'
-        # 创建一个Session对象，以便可以保持UA设置
+         # 创建一个Session对象，以便可以保持UA设置
         session = requests.Session()
-        session.headers.update({'User-Agent': user_agent})
+        session.headers.update({'User-Agent': Config.edge_user_agent})
         # 使用session对象发起请求，它会带上我们设置的UA
         lanzou_dir_url = Config.lanzou_dir_url
         response = session.get(lanzou_dir_url)
@@ -693,5 +695,5 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
 
 
 if __name__ == '__main__':
-    official_multiple_json_file = OfficialMultipleJsonFile()
-    official_multiple_json_file.download(force=True)
+    official_multiple_json_file = OfficialMultipleJsonFile(force_update=True)
+    official_multiple_json_file.download()
