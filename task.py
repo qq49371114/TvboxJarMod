@@ -351,7 +351,9 @@ class OfficialMultipleJsonFile(OfficialJsonFile, MultipleJsonFile):
             json_observers.extend([ModMultipleJsonFile(json_file_path) for json_file_path in multiple_mod_json_file])
             official_json_paths = [self.file_path.replace(self.file_name, f'{source_name}.json') for source_name in
                                    Config.source_name_cn_en_dict.values()]
-            json_observers.extend([OfficialSingleJsonFile(json_file_path, force_update=force_update) for json_file_path in official_json_paths])
+            json_observers.extend(
+                [OfficialSingleJsonFile(json_file_path, force_update=force_update) for json_file_path in
+                 official_json_paths])
             self._json_observers = json_observers
         else:
             self._json_observers = json_observers
@@ -362,6 +364,7 @@ class OfficialMultipleJsonFile(OfficialJsonFile, MultipleJsonFile):
     描述：更新多仓源json文件
     force: 是否强制下载更新
     """
+
     def download(self, force_update: bool = None):
         force_update = force_update if force_update else self._force_update
         # 发送 HTTP GET 请求并获取响应内容
@@ -443,12 +446,14 @@ class OfficialSingleJsonFile(OfficialJsonFile, SingleJsonFile):
                 missing_padding = 4 - len(data) % 4
                 if missing_padding:
                     data += '=' * missing_padding
-                data = str(base64.b64decode(data), encoding='utf-8')
+                data = str(base64.b64decode(data), encoding='utf-8', errors='ignore')
                 # 修复解密中的小bug
-                data = data.replace('//{', '{')
+                data = fr'{data}'.replace('//{', '{')
+                data = fr'{data}' + '}' if data[-1] != '}' else data
             try:
-                remote_json_data = json.loads(data, strict=False)
+                remote_json_data = json.loads(data)
             except JSONDecodeError:
+                print(vars(e))
                 print(f"无效的json数据: {data}")
                 continue
             # 判断官源json是否需要更新；增加强制更新选项
@@ -553,15 +558,18 @@ class ModMultipleJsonFile(MultipleJsonFile, ModJsonFile):
 
 
 class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
+    lanzou_dir_parsed = False
+    jar_id_dict = {}
+
     def __init__(self, file_path, spider: str = None, sites: list[dict] = None, mod_host: str = None,
                  spider_host: str = None):
         SingleJsonFile.__init__(self, file_path, spider, sites, spider_host)
         self._mod_type = None
         mod_type = self.mod_type
         self._mod_host = mod_host if mod_host else self.mod_host
-        if mod_type == 'MOD_CN':
-            self._jar_id_dict = {}
+        if mod_type == 'MOD_CN' and not ModSingleJsonFile.lanzou_dir_parsed:
             self.parse_lanzou_dir()
+            ModSingleJsonFile.lanzou_dir_parsed = True
 
     def update(self, official_single_json_file: OfficialSingleJsonFile):
         self.json_obj = official_single_json_file.json_obj
@@ -570,7 +578,8 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
             temp_json_obj = self.json_obj
             spider = temp_json_obj["spider"]
             spider_jar_name = SpiderUrlUtils.get_file_name(spider).replace('.txt', '.jar')
-            spider_jar_id = spider_jar_name if spider_jar_name.find('.jar') == -1 else self.get_lanzou_id_or_file_name(spider_jar_name)
+            spider_jar_id = spider_jar_name if spider_jar_name.find('.jar') == -1 else self.get_lanzou_id_or_file_name(
+                spider_jar_name)
             if not spider_jar_id:
                 return
             spider_url = self.mod_host + spider_jar_id
@@ -587,7 +596,8 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
                     if jar_url.find('.jar') == -1:
                         continue
                     jar_file_name = SpiderUrlUtils.get_file_name(jar_url).replace('.txt', '.jar')
-                    jar_id = jar_file_name if jar_file_name.find('.jar') == -1 else self.get_lanzou_id_or_file_name(jar_file_name)
+                    jar_id = jar_file_name if jar_file_name.find('.jar') == -1 else self.get_lanzou_id_or_file_name(
+                        jar_file_name)
                     jar_new_url = self.mod_host + jar_id
                     site['jar'] = jar_url.replace(jar_url.split(';md5;')[0], jar_new_url)
         else:
@@ -631,7 +641,7 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
 
     def parse_lanzou_dir(self):
         # 爬虫获取jar包分享网址
-         # 创建一个Session对象，以便可以保持UA设置
+        # 创建一个Session对象，以便可以保持UA设置
         session = requests.Session()
         session.headers.update({'User-Agent': Config.edge_user_agent})
         # 使用session对象发起请求，它会带上我们设置的UA
@@ -674,7 +684,7 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
             if response.status_code == 200:
                 data = json.loads(response.text)['text']
                 for item in data:
-                    self._jar_id_dict[item['name_all']] = item['id']
+                    ModSingleJsonFile.jar_id_dict[item['name_all']] = item['id']
             else:
                 print(f"post请求失败，状态码：{response.status_code}")
         else:
@@ -683,11 +693,11 @@ class ModSingleJsonFile(SingleJsonFile, ModJsonFile):
 
     def get_lanzou_id_or_file_name(self, name_or_id):
         # 如果是文件名，则返回id
-        if name_or_id in self._jar_id_dict.keys():
-            return self._jar_id_dict.get(name_or_id)
+        if name_or_id in ModSingleJsonFile.jar_id_dict.keys():
+            return ModSingleJsonFile.jar_id_dict.get(name_or_id)
         else:
-            for file_name in self._jar_id_dict.keys():
-                if name_or_id == self._jar_id_dict.get(file_name):
+            for file_name in ModSingleJsonFile.jar_id_dict.keys():
+                if name_or_id == ModSingleJsonFile.jar_id_dict.get(file_name):
                     return file_name
             # 如果不存在，则返回None
             print(f"方法：get_lanzou_id_or_file_name;  蓝奏云共享文件夹中缺少{name_or_id}jar文件")
