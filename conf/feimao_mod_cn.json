@@ -1,5 +1,5 @@
 {
-    "spider": "https://samisold.lanzn.com/iB0Ao1pdjclc;md5;b0005f1168110ce8850b18afd65a2f5a",
+    "spider": "https://samisold.lanzn.com/iKyIx1q1ep4h;md5;23dbf36a228d859d392c08b6e9403183",
     "wallpaper": "http://我不是.肥猫.live/ppic/feimao.php",
     "sites": [
         {
@@ -15,6 +15,7 @@
             "type": 3,
             "api": "csp_XBPQ",
             "playerType": 2,
+            "searchable": 0,
             "ext": {
                 "首页": "正在热映",
                 "图片代理": "",
@@ -163,16 +164,34 @@
             "key": "二懒影视",
             "name": "🏍️┃二懒┃影视",
             "type": 3,
-            "api": "csp_Yingtantv2",
+            "api": "csp_Fangniu4k",
             "searchable": 1,
-            "jar": "https://samisold.lanzn.com/izpCs1pdjcne;md5;6586de7a7e44b3e6797003dca0d3597a"
+            "jar": "https://samisold.lanzn.com/ijXxL1q1ep5i;md5;0c3bc05034316dae2ec42bc1d0c772f5"
+        },
+        {
+            "key": "耐看",
+            "name": "🦁┃耐看┃影视",
+            "type": 3,
+            "api": "csp_Nkdy",
+            "searchable": 0,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "毛驴",
+            "name": "🦙┃毛驴┃影视",
+            "type": 3,
+            "api": "csp_MaoLv",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
         },
         {
             "key": "皮皮虾",
             "name": "🦐┃皮皮┃影视",
             "type": 3,
             "api": "csp_PipiXia",
-            "searchable": 1,
+            "searchable": 0,
             "quickSearch": 1,
             "filterable": 1
         },
@@ -213,7 +232,7 @@
             "name": "🐦┃视觉┃影视",
             "type": 3,
             "api": "csp_Xinsj",
-            "searchable": 1,
+            "searchable": 0,
             "quickSearch": 1,
             "filterable": 1,
             "ext": "https://www.80yy3.com/"
@@ -237,19 +256,6 @@
             "ext": {
                 "server": "https://4k.ysctv.cn/api.php/app/",
                 "mackey": "yingshichetvQ4Zi|PHRBxdt7PppocRJ5"
-            }
-        },
-        {
-            "key": "布蕾",
-            "name": "⚡┃布蕾┃影视",
-            "type": 3,
-            "api": "csp_Lvdou",
-            "playerType": 1,
-            "ext": {
-                "server": "http://38.12.25.109:158/api.php/app/",
-                "mackey": "weZtRbfJDgzyvHiG|YLdoqhUccdDmEPQU",
-                "parsekey": "mupfinBA986icmAZ|eV7YDmhgzThSiR1s",
-                "parseurl": "https://maya.x3322.net/api/index?parsesId=5&parsesUrl="
             }
         },
         {
@@ -371,7 +377,8 @@
             "name": "🎭┃短剧┃视频",
             "type": 3,
             "api": "csp_Duanju",
-            "playerType": "2"
+            "playerType": "2",
+            "searchable": 0
         },
         {
             "key": "种子短剧",
@@ -397,6 +404,7 @@
             "type": 3,
             "playerType": "2",
             "api": "csp_BookTing",
+            "searchable": 0,
             "ext": "https://m.ting275.com",
             "style": {
                 "type": "rect",

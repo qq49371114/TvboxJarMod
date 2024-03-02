@@ -5,7 +5,12 @@ from requests.exceptions import RequestException
 from json import JSONDecodeError
 
 """
-遍历jar文件夹获取md5, 写入json配置文件
+魔改jar包执行流程：
+1. 逆向修改jar包 
+2. 复制到jar文件夹 
+3. 上传到蓝奏云
+4. 执行task.py
+5. 执行git
 """
 
 import base64
