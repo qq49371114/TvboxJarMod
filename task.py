@@ -455,12 +455,19 @@ class OfficialSingleJsonFile(OfficialJsonFile, SingleJsonFile):
                 # 修复解密中的小bug
                 data = fr'{data}'.replace('//{', '{')
                 data = fr'{data}' + '}' if data[-1] != '}' else data
+            data = fr'{data}'.replace('/*{', '{')
+            data = fr'{data}'.replace(',*/', ',')
+            temp_file_path = self.file_path.replace('.json', '_temp.json')
+            with open(temp_file_path, 'w', encoding='utf-8') as f:
+                f.write(data)
             try:
-                remote_json_data = json.loads(data)
+                with open(temp_file_path, 'r', encoding='utf-8') as f:
+                    remote_json_data = json.load(f)
             except JSONDecodeError:
-                print(vars(e))
                 print(f"无效的json数据: {data}")
                 continue
+            finally:
+                os.remove(temp_file_path)
             # 判断官源json是否需要更新；增加强制更新选项
             if self.json_obj != remote_json_data or self._force_update:
                 self.json_obj = remote_json_data
