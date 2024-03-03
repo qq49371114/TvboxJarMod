@@ -135,7 +135,7 @@ class Subject(ABC):
 
 class VodSource:
     def __init__(self, source_name, source_url):
-        self.source_name = source_nametask.py
+        self.source_name = source_name
         self.source_url = source_url
 
     def json(self):
