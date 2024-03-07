@@ -1,8 +1,5 @@
-import hashlib
-import shutil
-from typing import List
+from git import Repo
 from requests.exceptions import RequestException
-from json import JSONDecodeError
 
 """
 魔改jar包执行流程：
@@ -17,7 +14,6 @@ import base64
 import json
 import os
 import re
-from abc import ABC, abstractmethod, ABCMeta
 
 import requests
 from bs4 import BeautifulSoup
@@ -162,6 +158,15 @@ class TvboxConfigManager(object):
             else:
                 print(f"{file_name}未发现更新")
 
+    def git_push(self, repo_path, desc="自动更新源"):
+        # 首先，我们需要创建一个Git对象，实例化我们想要的仓库
+        repo = Repo(repo_path)
+        # 接下来，我们想要提交所有修改
+        repo.git.add(all=True)
+        # 现在，我们想提交这些修改，并提供一个提交消息
+        repo.git.commit("-m", desc)
+        # 最后，我们想要将这些提交推送到远程仓库
+        repo.git.push()
 
 
 if __name__ == '__main__':
@@ -169,3 +174,4 @@ if __name__ == '__main__':
     updated = config_manager.update_multi_config()
     if updated:
         config_manager.update_single_config()
+        config_manager.git_push(Config.root_path)
