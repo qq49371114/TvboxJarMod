@@ -1,12 +1,12 @@
 {
     "storeHouse": [
+		{
+            "sourceName": "肥猫",
+            "sourceUrl": "https://gitee.com/samisold/TvboxJarMod/raw/main/conf/feimao.json"
+        },
         {
             "sourceName": "饭太硬",
             "sourceUrl": "https://gitee.com/samisold/TvboxJarMod/raw/main/conf/fan.json"
-        },
-        {
-            "sourceName": "肥猫",
-            "sourceUrl": "https://gitee.com/samisold/TvboxJarMod/raw/main/conf/feimao.json"
         }
     ],
     "ext": {
