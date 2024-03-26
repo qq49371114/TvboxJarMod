@@ -1,12 +1,12 @@
 {
     "urls": [
 		{
-            "name": "饭太硬",
-            "url": "http://www.饭太硬.top/tv/"
-        },
-		{
             "name": "肥猫",
             "url": "http://肥猫.live"
+        },
+		{
+            "name": "饭太硬",
+            "url": "http://www.饭太硬.top/tv/"
         }
     ],
     "ext": {
