@@ -1,12 +1,12 @@
 {
-    "storeHouse": [
+    "urls": [
 		{
-            "sourceName": "饭太硬",
-            "sourceUrl": "http://www.饭太硬.top/tv/"
+            "name": "饭太硬",
+            "url": "http://www.饭太硬.top/tv/"
         },
 		{
-            "sourceName": "肥猫",
-            "sourceUrl": "http://肥猫.live"
+            "name": "肥猫",
+            "url": "http://肥猫.live"
         }
     ],
     "ext": {

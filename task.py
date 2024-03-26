@@ -33,25 +33,63 @@ class Config:
     lanzou_dir_password = 'teng'
     multiple_json_file = os.path.join(conf_path, 'multiple_source_tvbox.json')
     default_multiple_json_obj = {
-        "storeHouse": [
+        "urls": [
             {
-                "sourceName": "肥猫",
-                "sourceUrl": "http://肥猫.live"
+                "name": "饭太硬",
+                "url": "http://www.饭太硬.top/tv/"
             },
             {
-                "sourceName": "饭太硬",
-                "sourceUrl": "http://www.饭太硬.top/tv/"
+                "name": "肥猫",
+                "url": "http://肥猫.live"
             }
         ],
         "ext": {
-            "highWeightApi": ["fre", "南瓜", "星奇", "黑狐", "低端", "咕噜"],
-            "lowWeightApi": ["官源", "荐片", "少儿", "小学", "初中", "高中", "儿童", "哔哩"],
-            "blockApi": ["荐影", "预告", "急救", "小说", "短剧", "体育", "聚短", "球", "MV", "┃飞"],
-            "adKeyword": ["广告", "公众号", "饭太硬", "肥猫", "免费分享", "神秘的哥哥"]
+            "highWeightApi": [
+                "fre",
+                "南瓜",
+                "星奇",
+                "黑狐",
+                "低端",
+                "咕噜"
+            ],
+            "lowWeightApi": [
+                "官源",
+                "荐片",
+                "少儿",
+                "小学",
+                "初中",
+                "高中",
+                "儿童",
+                "哔哩"
+            ],
+            "blockApi": [
+                "荐影",
+                "预告",
+                "急救",
+                "小说",
+                "短剧",
+                "体育",
+                "聚短",
+                "球",
+                "MV",
+                "┃飞"
+            ],
+            "adKeyword": [
+                "广告",
+                "公众号",
+                "饭太硬",
+                "肥猫",
+                "免费分享",
+                "神秘的哥哥"
+            ],
+            "adRegex": [
+                "(?:from|content)\":\"([^\"]*?(?:公众号|神秘的哥哥|肥猫)[^\"]*?[\\s：:-])",
+                "(?:vod_name)\":\"[^\"]*?(┃.*?)\""
+            ]
         }
     }
     multiple_json_obj_template = {
-        "storeHouse": [],
+        "urls": [],
         "ext": {
             "highWeightApi": [],
             "lowWeightApi": [],
@@ -94,14 +132,14 @@ class TvboxConfigManager(object):
             # 获取父 div 节点中 data-clipboard-text 属性的值
             source_url = parent_div.get("data-clipboard-text")
             source_name = span_tag.get_text()
-            source = {"sourceName": source_name, "sourceUrl": source_url}
+            source = {"name": source_name, "url": source_url}
             remote_store_house_json.append(source)
         if len(remote_store_house_json) == 0:
             print(f"未获取到json源数据：{Config.index_url}")
             return False
         self.local_conf_obj = Config.default_multiple_json_obj
         remote_conf_obj = Config.default_multiple_json_obj
-        remote_conf_obj["storeHouse"] = remote_store_house_json
+        remote_conf_obj["urls"] = remote_store_house_json
         if remote_conf_obj != self.local_conf_obj:
             self.local_conf_obj = remote_conf_obj
             with open(Config.multiple_json_file, "w", encoding="utf-8") as f:
@@ -117,14 +155,14 @@ class TvboxConfigManager(object):
     def update_single_config(self):
         # 发送请求, 获取最新官源json文件, 解析json文件获取md5值，存入json_md5_dict
         session = requests.Session()
-        for source in self.local_conf_obj["storeHouse"]:
+        for source in self.local_conf_obj["urls"]:
             # 从多仓源json中获取源中文名
-            source_name = source["sourceName"]
+            source_name = source["name"]
             # 通过源中文名生成对应官方单仓源json文件名: 肥猫 -> feimao.json
             file_name = f'{Config.source_name_cn_en_dict[source_name]}.json'
             file_path = os.path.join(Config.conf_path, file_name)
 
-            source_url = source["sourceUrl"]
+            source_url = source["url"]
             # 设置UA字符串
             session.headers.update({'User-Agent': Config.okhttp_user_agent})
             # 使用session对象发起请求，它会带上我们设置的UA
