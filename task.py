@@ -20,7 +20,7 @@ from bs4 import BeautifulSoup
 
 
 class Config:
-    root_path = os.path.dirname(os.path.abspath(__file__))
+    root_path = r'D:\Project\android\TvboxJarMod'
     conf_path = os.path.join(root_path, 'conf')
     jar_dir_path = os.path.join(root_path, 'jar')
     jar_official_dir_path = os.path.join(root_path, 'jar_official')
