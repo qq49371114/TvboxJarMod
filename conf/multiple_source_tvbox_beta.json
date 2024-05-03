@@ -1,86 +1,32 @@
 {
-    "urls": [
-	    {
-            "name": "肥猫",
-            "url": "https://gitee.com/samisold/TvboxJarMod/raw/main/conf/feimao.json"
-        },
-		{
+    "urls": [{
             "name": "饭太硬",
             "url": "https://gitee.com/samisold/TvboxJarMod/raw/main/conf/fan.json"
-        },
-		{
+        }, {
+            "name": "肥猫",
+            "url": "https://gitee.com/samisold/TvboxJarMod/raw/main/conf/feimao.json"
+        }, {
             "name": "小米",
             "url": "http://xhww.fun/小米/DEMO.json"
-        },
-		{
+        }, {
             "name": "屌炸天",
             "url": "https://jihulab.com/okcaptain/kko/-/raw/main/ok.txt"
-        },
-		{
+        }, {
             "name": "讴歌",
             "url": "http://tv.nxog.top/m/"
-        },
-		{
+        }, {
             "name": "PG",
             "url": "https://mirror.ghproxy.com/raw.githubusercontent.com/gaotianliuyun/gao/master/0825.json"
-        },
-		{
+        }, {
             "name": "采妮诗",
             "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json"
         }
     ],
     "ext": {
-        "highWeightApi": [
-            "南瓜",
-            "黑狐",
-			"白嫖",
-			"剧圈",
-			"贱贱",
-			"Vid",
-			"兄弟",
-			"快看",
-			"酷看",
-			"视觉",
-			"萌米",
-        ],
-        "lowWeightApi": [
-            "官源",
-            "荐片",
-            "少儿",
-            "小学",
-            "初中",
-            "高中",
-            "儿童",
-            "哔哩",
-			"荐片",
-			"fre",
-			"南坊"
-        ],
-        "blockApi": [
-            "荐影",
-            "预告",
-            "急救",
-            "小说",
-            "短剧",
-            "体育",
-            "聚短",
-            "球",
-            "MV",
-            "┃飞"
-        ],
-        "adKeyword": [
-            "广告",
-            "公众号",
-            "饭太硬",
-            "肥猫",
-            "免费分享",
-            "神秘的哥哥"
-        ],
-		"adRegex": [
-			"(?:from|content)\":\"([^\"]*?(?:公众号|神秘的哥哥|肥猫)[^\"]*?[\\s：:-])",
-			"(?:vod_name)\":\"[^\"]*?(┃.*?)\"",
-			"(?:from|content)\":\"(.*?神秘的哥哥们.*?公众号)",
-			"(?<=vod_play_from)\":\"(.*?广告.*?)(?=\\$\\$\\$)"
-		]
+        "highWeightApi": ["南瓜", "黑狐", "白嫖", "剧圈", "贱贱", "Vid", "兄弟", "快看", "酷看", "视觉", "萌米", ],
+        "lowWeightApi": ["官源", "荐片", "少儿", "小学", "初中", "高中", "儿童", "哔哩", "荐片", "fre", "南坊"],
+        "blockApi": ["荐影", "预告", "急救", "小说", "短剧", "体育", "聚短", "球", "MV", "┃飞"],
+        "adKeyword": ["广告", "公众号", "饭太硬", "肥猫", "免费分享", "神秘的哥哥"],
+        "adRegex": ["(?:from|content)\":\"([^\"]*?(?:公众号|神秘的哥哥|肥猫)[^\"]*?[\\s：:-])", "(?:vod_name)\":\"[^\"]*?(┃.*?)\"", "(?:from|content)\":\"(.*?神秘的哥哥们.*?公众号)", "(?<=vod_play_from)\":\"(.*?广告.*?)(?=\\$\\$\\$)"]
     }
 }
