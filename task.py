@@ -25,7 +25,7 @@ class Config:
     jar_dir_path = os.path.join(root_path, 'jar')
     jar_official_dir_path = os.path.join(root_path, 'jar_official')
     source_name_cn_en_dict = {"饭太硬": "fan", "肥猫": "feimao"}
-    index_url = "https://xn--sss604efuw.top/"
+    index_url = "https://xn--sss604efuw.com/"
     edge_user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0'
     okhttp_user_agent = 'Okhttp/3.11.0'
     # 蓝奏网盘jar包共享文件夹
@@ -36,7 +36,7 @@ class Config:
         "urls": [
             {
                 "name": "饭太硬",
-                "url": "http://www.饭太硬.top/tv/"
+                "url": "http://www.饭太硬.com/tv/"
             },
             {
                 "name": "肥猫",

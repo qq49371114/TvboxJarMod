@@ -1,5 +1,5 @@
 {
-  "spider": "https://mpimg.cn/down.php/2291c81094ea9a194b713ecc96172b06.jar;md5;2291c81094ea9a194b713ecc96172b06",
+  "spider": "https://cloud.lxweb.cn/f/xQWjIM/PandaQ240603.jar;md5;924095692b85a3768ffab6607dc61864",
   "wallpaper": "http://我不是.肥猫.live/ppic/feimao.php",
   "logo":"http://我不是.肥猫.live/fatcat.jpg",
   "sites": [
@@ -19,12 +19,20 @@
       "searchable": 0
     },
     {
+            "key": "csp_Duopan",
+            "name": "🖍︎┃蜡笔┃影视",
+            "type": 3,
+            "api": "csp_Duopan",
+            "playerType": 2,
+            "filterable": 1,
+            "ext": "https://duopan.fun/"
+        },
+    {
       "key": "nangua",
       "name": "🎃┃南瓜┃影视",
       "type": 3,
       "playerType": "2",
-      "api": "http://dt.xn--yety82d.love/js/lib/drpy2.min.js",
-      "ext": "http://dt.xn--yety82d.love/js/南瓜.js"
+      "api": "http://dt.xn--yety82d.love/js/ng_open.js"
     },
     {
       "key": "新视觉",
@@ -154,7 +162,7 @@
       "name": " 😝┃可可┃影视",
       "type": 3,
       "playerType": "2",
-      "api": "Keke",
+      "api": "csp_Keke",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
@@ -164,10 +172,7 @@
       "name": " 👗┃骚火┃影视",
       "type": 3,
       "playerType": "2",
-      "api": "SouHuo",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
+      "api": "csp_SaoHuo"
     },
     {
       "key": "云播影视",
