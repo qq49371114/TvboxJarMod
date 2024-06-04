@@ -36,7 +36,7 @@ class Config:
         "urls": [
             {
                 "name": "饭太硬",
-                "url": "http://www.饭太硬.com/tv/"
+                "url": "http://饭太硬.com/tv/"
             },
             {
                 "name": "肥猫",
