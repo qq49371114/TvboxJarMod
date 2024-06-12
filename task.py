@@ -40,8 +40,8 @@ class Config:
                 "url": "http://饭太硬.com/tv/"
             },
             {
-                "name": "肥猫",
-                "url": "http://肥猫.live"
+                "name": "王二小",
+                "url": "http://tvbox.xn--4kq62z5rby2qupq9ub.xyz/"
             }
         ],
         "ext": {
