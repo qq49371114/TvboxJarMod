@@ -24,7 +24,7 @@ class Config:
     conf_path = os.path.join(root_path, 'conf')
     jar_dir_path = os.path.join(root_path, 'jar')
     jar_official_dir_path = os.path.join(root_path, 'jar_official')
-    # source_name_cn_en_dict = {"饭太硬": "fan", "肥猫": "feimao","王小二":"wangxiaoer"}
+    # source_name_cn_en_dict = {"饭太硬": "fan", "肥猫": "feimao","王二小":"wangerxiao"}
     source_name_cn_en_dict = {"饭太硬": "fan","王小二":"wangxiaoer"}
     index_url = "https://xn--sss604efuw.com/"
     edge_user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0'
