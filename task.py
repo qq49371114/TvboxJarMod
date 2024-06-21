@@ -24,8 +24,8 @@ class Config:
     conf_path = os.path.join(root_path, 'conf')
     jar_dir_path = os.path.join(root_path, 'jar')
     jar_official_dir_path = os.path.join(root_path, 'jar_official')
-    # source_name_cn_en_dict = {"饭太硬": "fan", "肥猫": "feimao","王二小":"wangerxiao"}
-    source_name_cn_en_dict = {"饭太硬": "fan","王二小":"wangerxiao"}
+    source_name_cn_en_dict = {"饭太硬": "fan", "肥猫": "feimao"}
+    # source_name_cn_en_dict = {"饭太硬": "fan","王二小":"wangerxiao"}
     index_url = "https://xn--sss604efuw.com/"
     edge_user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0'
     okhttp_user_agent = 'Okhttp/3.11.0'
@@ -40,8 +40,8 @@ class Config:
                 "url": "http://饭太硬.com/tv/"
             },
             {
-                "name": "王二小",
-                "url": "http://tvbox.xn--4kq62z5rby2qupq9ub.xyz/"
+                "name": "肥猫",
+                "url": "http://肥猫.live"
             }
         ],
         "ext": {
