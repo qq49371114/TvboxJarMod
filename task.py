@@ -41,7 +41,7 @@ class Config:
             },
             {
                 "name": "肥猫",
-                "url": "http://肥猫.live"
+                "url": "http://肥猫.com"
             }
         ],
         "ext": {
