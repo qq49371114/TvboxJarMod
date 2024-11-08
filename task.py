@@ -26,7 +26,7 @@ class Config:
     jar_official_dir_path = os.path.join(root_path, 'jar_official')
     source_name_cn_en_dict = {"饭太硬": "fan", "肥猫": "feimao"}
     # source_name_cn_en_dict = {"饭太硬": "fan","王二小":"wangerxiao"}
-    index_url = "https://xn--sss604efuw.com/"
+    index_url = "https://www.xn--sss604efuw.com/"
     edge_user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0'
     okhttp_user_agent = 'Okhttp/3.11.0'
     # 蓝奏网盘jar包共享文件夹
@@ -111,9 +111,12 @@ class TvboxConfigManager(object):
         self.local_conf_obj = Config.default_multiple_json_obj
 
     def update_multi_config(self) -> bool:
-        # 发送 HTTP GET 请求并获取响应内容
-        # 发送 HTTP GET 请求并获取响应内容
-        response = requests.get(Config.index_url)
+        try:
+            # 发送 HTTP GET 请求并获取响应内容
+            response = requests.get(Config.index_url)
+        except Exception as e:
+            print(f"网络请求失败: {e}")
+            return False
         if response.status_code != 200:
             print(f"请求失败: {Config.index_url, response.status_code}")
             return False
