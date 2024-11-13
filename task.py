@@ -113,7 +113,7 @@ class TvboxConfigManager(object):
     def update_multi_config(self) -> bool:
         try:
             # 发送 HTTP GET 请求并获取响应内容
-            response = requests.get(Config.index_url)
+            response = requests.get(Config.index_url, timeout=60)
         except Exception as e:
             print(f"网络请求失败: {e}")
             return False
